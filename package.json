@@ -21,10 +21,13 @@
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.3.0",
     "ember-cli-dependency-checker": "^1.3.0",
+    "ember-cli-deploy-build-plus": "^0.1.9",
+    "ember-cli-deploy-couchdb": "^0.1.4",
     "ember-cli-eslint": "^3.0.0",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-htmlbars-inline-precompile": "^0.4.0",
     "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-nwjs": "^0.3.10",
     "ember-cli-qunit": "^4.0.0",
     "ember-cli-sass": "^6.2.0",
     "ember-cli-shims": "^1.1.0",
@@ -39,6 +42,7 @@
     "ember-light-table": "^1.8.6",
     "ember-load-initializers": "^1.0.0",
     "ember-math-helpers": "^2.1.0",
+    "ember-models-table": "^1.12.0",
     "ember-paper": "^1.0.0-alpha.20",
     "ember-prop-types": "^3.13.0",
     "ember-resolver": "^4.0.0",
@@ -48,10 +52,17 @@
     "ember-truth-helpers": "^1.3.0",
     "ember-welcome-page": "^3.0.0",
     "loader.js": "^4.2.3",
+    "nw": "^0.23.5",
     "paper-data-table": "^0.1.4"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
-  "private": true
+  "private": true,
+  "main": "dist/index.html",
+  "window": {
+    "width": 960,
+    "height": 600
+  },
+  "false": {}
 }

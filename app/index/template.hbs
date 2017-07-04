@@ -8,7 +8,7 @@
 {{/table.head}}
 {{#table.body as |body|}}
   {{#each (sort-by table.sortDesc listData) as |dessert|}}
-    {{#body.row edit=true as |row|}}
+    {{#body.row onClick="cefCustomObject.logVal(""test"");" edit=true as |row|}}
       {{#row.cell}}{{dessert.name}}{{/row.cell}}
       {{#row.cell numeric=true}}{{dessert.email}}{{/row.cell}}
       {{#row.cell}}{{dessert.type}}{{/row.cell}}

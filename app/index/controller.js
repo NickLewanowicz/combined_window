@@ -34,10 +34,22 @@ export default Ember.Controller.extend({
     }
   ],
   selectedContacts: [{'name': 'C200C', 'image': 'p.svg'},{'name': 'VTM1', 'image': 'f.jpg'}],
-  computedChips: Ember.computed('selectedContacts', function() {
-    let firstName = this.get('firstName'),
-        lastName  = this.get('lastName');
-
-    return firstName + ' ' + lastName;
-  })
+  columns: [
+  {
+    "propertyName": "name",
+    "title": "JD"
+  },
+  {
+    "propertyName": "email",
+    "title": "Time"
+  },
+  {
+    "propertyName": "type",
+    "title": "Type"
+  },
+  {
+    "propertyName": "location",
+    "title": "Location"
+  }
+]
 });
