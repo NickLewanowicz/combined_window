@@ -1,0 +1,15 @@
+@import 'ember-paper';
+
+.md-contact-chips .md-chips .md-chip {
+  font-size: 14px;
+  height: 16px;
+  line-height: 16px;
+  .md-contact-avatar img {
+    height: 16px;
+  }
+}
+
+.md-ripple-container {
+  min-height: 0px;
+  box-shadow: 0;
+}

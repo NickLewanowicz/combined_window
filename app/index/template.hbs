@@ -1,3 +1,28 @@
-This is the index
+{{#paper-data-table sortProp="name" sortDir="desc" selectable=true as |table|}}
+{{#table.head as |head|}}
+  {{#head.column sortProp="name"}}JD{{/head.column}}
+  {{#head.column sortProp="email" numeric=true}}Time{{/head.column}}
+  {{#head.column sortProp="type"}}Type{{/head.column}}
+  {{#head.column sortProp="location"}}Location{{/head.column}}
+  {{#head.column sortProp="units"}}Units{{/head.column}}
+{{/table.head}}
+{{#table.body as |body|}}
+  {{#each (sort-by table.sortDesc listData) as |dessert|}}
+    {{#body.row edit=true as |row|}}
+      {{#row.cell}}{{dessert.name}}{{/row.cell}}
+      {{#row.cell numeric=true}}{{dessert.email}}{{/row.cell}}
+      {{#row.cell}}{{dessert.type}}{{/row.cell}}
+      {{#row.cell}}{{dessert.location}}{{/row.cell}}
+      {{#row.cell numeric=true}}
+        {{paper-contact-chips
+          readOnly=true
+          content=selectedContacts
+          options=remainingContacts
+        }}
+      {{/row.cell}}
+    {{/body.row}}
+  {{/each}}
+{{/table.body}}
+{{/paper-data-table}}
 
 {{outlet}}
