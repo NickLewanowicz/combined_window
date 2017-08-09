@@ -1,0 +1,93 @@
+<div style={{body-style listConfig.data.body}}>
+  {{#paper-data-table sortProp=(if listConfig.data.table.sort listConfig.data.table.sort "priority") sortDir="asc" selectable=false as |table|}}
+    {{#table.head as |head|}}
+      {{#head.column}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.callNumber listConfig.data.table.headers.callNumber "Call #"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.callType listConfig.data.table.headers.callType "Call Type"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.priority listConfig.data.table.headers.priority "Priority"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.address listConfig.data.table.headers.address "Address"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.relatedCalls listConfig.data.table.headers.relatedCalls "Related Calls"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.units listConfig.data.table.headers.units "Units"}}
+      {{/head.column}}
+      {{#head.column}}
+        {{if listConfig.data.table.headers.remarks listConfig.data.table.headers.units "Remarks"}}
+      {{/head.column}}
+    {{/table.head}}
+    {{#table.body as |body|}}
+      {{#each (sort-by table.sortDesc listData.data) as |call|}}
+        {{#body.row class="tab data-row" edit=true as |row|}}
+          {{#row.cell}}  {{/row.cell}}
+          {{#row.cell}}{{call.id}}{{/row.cell}}
+          {{#row.cell}}{{call.callType}}{{/row.cell}}
+          {{#row.cell numeric=true}}
+            <span class="priority" style={{priority-color listConfig.data.table.columns.priority call.priority}}>{{call.priority}}</span>
+          {{/row.cell}}
+          {{#row.cell}}{{uppercase call.address}}{{/row.cell}}
+          {{#row.cell}}
+            {{#each call.relatedCalls as |relatedCall|}}
+              <span onClick={{action "pillClick" "call" relatedCall}} style={{unit-color listConfig.data.table.columns.relatedCalls relatedCall}} class="units">
+                {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.label}}
+                {{#bs-popover triggerEvents="hover focus" placement="right"}}
+                  {{relatedCall.address}},{{relatedCall.callType}}
+                {{/bs-popover}}
+              </span>
+            {{/each}}
+          {{/row.cell}}
+          {{#row.cell}}
+          {{#each call.callUnits as |units|}}
+              <span onClick={{action "pillClick" "unit" units}}  style={{unit-color listConfig.data.table.columns.units units}} class="units">
+                {{#if (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+                  {{fa-icon (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+                {{else}}
+                  {{fa-icon (if (eq call.serviceType 'cl') "fire-extinguisher" "cab")}}
+                {{/if}}
+                {{custom-label units listConfig.data.table.columns.units.label}}
+                {{#bs-popover triggerEvents="hover focus" placement="right"}}
+                  {{units.status}},{{units.unitType}}
+                {{/bs-popover}}
+              </span>
+          {{/each}}
+          {{#each call.relatedCalls as |relCalls|}}
+            {{#each relCalls.callUnits as |units|}}
+              <span onClick={{action "pillClick" "unit" units}} style={{unit-color listConfig.data.table.columns.units units}} class="units">
+                {{#if (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+                  {{fa-icon (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+                {{else}}
+                  {{fa-icon (if (eq relCalls.serviceType 'cl') "fire-extinguisher" "cab")}}
+                {{/if}}
+                {{custom-label units listConfig.data.table.columns.units.label}}
+                {{#bs-popover triggerEvents="hover focus" placement="right"}}
+                  {{units.status}},{{units.unitType}}
+                {{/bs-popover}}
+              </span>
+            {{/each}}
+          {{/each}}
+          {{/row.cell}}
+          {{#row.cell}}
+            {{#each call.callUnits as |units|}}
+              {{units.remarks}}
+            {{/each}}
+            {{#each call.relatedCalls as |relCalls|}}
+              {{#each relCalls.callUnits as |units|}}
+                {{units.remarks}}
+              {{/each}}
+            {{/each}}
+          {{/row.cell}}
+        {{/body.row}}
+      {{/each}}
+    {{/table.body}}
+  {{/paper-data-table}}
+  {{yield}}
+</div>

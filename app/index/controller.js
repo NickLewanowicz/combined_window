@@ -1,11 +1,11 @@
 import Ember from 'ember';
-
 export default Ember.Controller.extend({
   //callData: Ember.get('app','callData'),
   listData: {
     "data":[
       {
-        "rin":"PP16000000048",
+        "rin":"PP17000000048",
+        "id":"PP48",
         "serviceType":"cc",
         "callType":"245",
         "priority":"6",
@@ -14,7 +14,8 @@ export default Ember.Controller.extend({
           {
             "unitId":"JPM2",
             "unitType":"PT",
-            "status":"DP"
+            "status":"DP",
+            "remarks":"Blah"
           },
           {
             "unitId":"8899",
@@ -24,7 +25,8 @@ export default Ember.Controller.extend({
         ],
         "relatedCalls":[
           {
-            "rin":"PG16000000002",
+            "id":"PG2",
+            "rin":"PP17000000048",
             "serviceType":"cc",
             "callType":"245",
             "priority":"2",
@@ -40,7 +42,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"PP16000000006",
+        "id":"PP6",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"THC",
         "priority":"3",
@@ -54,7 +57,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"PP15000000024",
+        "id":"PP24",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"ACCNON",
         "priority":"7",
@@ -68,7 +72,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"PF14000000002",
+        "id":"PF2",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"ABV",
         "priority":"3",
@@ -82,7 +87,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"PP16000000016",
+        "id":"PP16",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"TS",
         "priority":"3",
@@ -96,7 +102,8 @@ export default Ember.Controller.extend({
         ],
         "relatedCalls":[
           {
-            "rin":"PP17000000001",
+            "id":"PP1",
+            "rin":"PP17000000048",
             "serviceType":"cc",
             "callType":"ABV",
             "priority":"3",
@@ -105,7 +112,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"PP15000003129",
+        "id":"PP3129",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"ACCNON",
         "priority":"2",
@@ -119,7 +127,8 @@ export default Ember.Controller.extend({
         ]
       },
       {
-        "rin":"RP16000000046",
+        "id":"RP46",
+        "rin":"PP17000000048",
         "serviceType":"cc",
         "callType":"ABV",
         "priority":"9",
@@ -140,14 +149,16 @@ export default Ember.Controller.extend({
         ],
         "relatedCalls":[
           {
-            "rin":"16000000001",
+            "id":"RP11",
+            "rin":"PP17000000048",
             "serviceType":"cc",
             "callType":"AB3",
             "address":"123 Sesame Street",
             "priority":"2"
           },
           {
-            "rin":"RP16000000046",
+            "id":"RP46",
+            "rin":"PP17000000048",
             "serviceType":"cl",
             "callType":"ABV",
             "priority":"9",
@@ -172,127 +183,70 @@ export default Ember.Controller.extend({
     ]
   },
   listConfig: {
-  	"data": {
-  		"body": {
-  			"color": "#FFFFFF",
-  			"background": "#000000",
-  			"font-family": "arial",
-  			"font-size": "14px"
-  		},
-  		"table": {
-  			"sort": "priority",
-  			"headers": {
-  				"callId": "Call ID",
-  				"callType": "Call Type"
-  			},
-  			"columns": {
-  				"priority": {
-  					"background": [
-  						{"key":"val"},
-  						{"1": "#fb4f4f"},
-  						{"2": "#fb4f4f"},
-  						{"3": "#fb4f4f"},
-  						{"4": "#5858fb"},
-  						{"5": "#5858fb"},
-  						{"6": "#5858fb"},
-  						{"7": "#609460"},
-  						{"8": "#609460"},
-  						{"9": "#609460"}
-  					]
-  				},
-  				"units": {
-  					"color": {
-  						"status": [
-  							{"key":"val"},
-  							{"AV": "#fb4f4f"},
-  							{"ER": "#5858fb"},
-  							{"OS": "#609460"}
-  						]
-  					},
-  					"label":["unitId"]
-  				},
-  				"relatedCalls": {
-  					"background": {
-  						"serviceType": [
-  							{"key":"val"},
-  							{"cc": "#0091ca"},
-  							{"cl": "#ff0000"}
-  						]
-  					},
-            "color":"white",
-  					"label": ["serviceType","callNumber"]
-  				}
-  			}
-  		}
-  	}
-  },
-actions:{
-  addRow() {
-    console.log(this.get('listData'))
-    this.set('listData.data', this.get('listData.data').addObject({
-      "rin":"RP16000000046",
-      "serviceType":"cl",
-      "callType":"ABV",
-      "priority":"9",
-      "address":"1 North Bvd",
-      "callUnits":[
-        {
-          "unitId":"CCE4",
-          "unitType":"FTEST",
-          "status":"AV",
-          "capabilities":"asdf"
+    "data": {
+      "body": {
+        "color": "#FFFFFF",
+        "background": "#000000",
+        "font-family": "arial",
+        "font-size": "14px",
+        "font-weight": "bold"
+      },
+      "table": {
+        "sort": "priority",
+        "headers": {
+          "priority": "Pri",
+          "callId": "Call ID",
+          "callType": "Type"
         },
-        {
-          "unitId":"BC3",
-          "unitType":"ABV",
-          "status":"OS",
-          "capabilities":"C"
-        }
-      ],
-      "relatedCalls":[
-        {
-          "rin":"16000000001",
-          "serviceType":"cc",
-          "callType":"AB3",
-          "address":"123 Sesame Street",
-          "priority":"2"
-        },
-        {
-          "rin":"RP16000000046",
-          "serviceType":"cl",
-          "callType":"ABV",
-          "priority":"9",
-          "address":"456 Malibu Terrace",
-          "callUnits":[
-            {
-              "unitId":"CCE4",
-              "unitType":"FTEST",
-              "status":"AV",
-              "capabilities":"asdf"
-            },
-            {
-              "unitId":"BC3",
-              "unitType":"ABV",
-              "status":"OS",
-              "capabilities":"C"
+        "columns": {
+          "priority": {
+            "background": {
+              "key":"priority",
+              "1": "#fb4f4f",
+              "2": "#fb4f4f",
+              "3": "#fb4f4f",
+              "4": "#5858fb",
+              "5": "#5858fb",
+              "6": "#5858fb",
+              "7": "#609460",
+              "8": "#609460",
+              "9": "#609460"
             }
-          ]
+          },
+          "units": {
+            "icon": {
+              "key":"unitType",
+              "FTEST": "ambulance"
+            },
+            "font-size": "14px",
+            "font-weight": "normal",
+            "color": "white",
+            // "color":{
+            //   "key":"status",
+            //   "AV": "#5858fb",
+            //   "ER": "#609460",
+            //   "OS": "#fb4f4f"
+            // },
+            "background": {
+              "key":"status",
+              "AV": "#fb4f4f",
+              "ER": "#5858fb",
+              "OS": "#609460"
+            },
+            "label":["unitId", "status"]
+          },
+          "relatedCalls": {
+            "font-weight": "lighter",
+            "background": {
+              "key":"serviceType",
+              "cc": "#0091ca",
+              "cl": "#ff0000"
+            },
+            "color":"white",
+            "label": ["id"]
+          }
         }
-      ]
-  }))},
-  delRow() {
-    this.get('listData.data').popObject()
-  },
-  reqData() {
-    console.log(this.get('callData'));
-    Ember.$.ajax(
-    {
-      type: "GET",
-      url:"http://localhost:4200/calls",
-      contentType: "application/json"
-    })
-    this.set('data', this.get('data')+1)
+      }
+    }
   }
-}
-
 });

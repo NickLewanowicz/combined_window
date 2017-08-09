@@ -13,6 +13,9 @@
   }
 }
 
+table {
+  width: 100%;
+}
 .md-ripple-container {
   min-height: 0px;
   box-shadow: 0;
@@ -47,17 +50,21 @@
   border-radius: 60%;
   color: white;
 }
+
+.space {
+  min-width: 100px;
+}
+
 .units {
   text-decoration:none;
 	color:#333333;
-	font-size:12px;
-	font-weight:bold;
-	padding:0 5px;
-	line-height:16px;
+	padding:0px 5px 0px 5px;
+  margin: 5px 2px 5px 2px;
 	height: auto;
 	display:inline-block;
 	text-align:center;
-  border-radius: 16px;
+  border-radius: 3px;
+  background-color: #a0a0a0;
 }
 
 .data-row {
@@ -69,10 +76,36 @@
   border-top-width: thin;
 }
 .data-row:hover {
-  background-color: #a0a0a0;
 }
 
 .units:hover {
   filter: brightness(125%);
 }
+td:nth-child(3) {
+  padding-right: 10px;
+}
+td:nth-child(4) {
+  padding-right: 10px;
+}
+td:nth-child(5) {
+  padding-top: 2px;
+  min-width:30px;
+}
+td:nth-child(6) {
+  white-space: nowrap;
+}
+td:nth-child(7) {
+  width: 15%;
+}
+td:nth-child(8) {
+  width: 60%;
+}
+td {
+  vertical-align: top;
+}
+
+th {
+  text-align: center;
+}
+
 @import "ember-bootstrap/bootstrap";

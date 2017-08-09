@@ -8,7 +8,6 @@ export function serviceType(params/*, hash*/) {
   }else {
     return 'Undefined'
   }
-  return params;
 }
 
 export default Ember.Helper.helper(serviceType);
