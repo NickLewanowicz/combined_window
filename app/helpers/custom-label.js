@@ -4,6 +4,7 @@ export function customLabel(params/*, hash*/) {
   var label = ""
   if(params[1] === null){return params[1]["unitId"]}
   for (var i = 0; i < params[1].length; i++) {
+    if(!params[0][params[1][i]]){continue}
     if (params[1][i] === 'status'){
       label = label.slice(0, -1)
       label += "(" + params[0][params[1][i]] + ") "

@@ -237,7 +237,8 @@ export default Ember.Controller.extend({
               "ER": "#5858fb",
               "OS": "#609460"
             },
-            "label":["unitId", "status"]
+            "label":["unitId", "status"],
+            "tooltip":["unitId", "unitType", "status", "remarks"]
           },
           "relatedCalls": {
             "font-weight": "lighter",
@@ -247,7 +248,8 @@ export default Ember.Controller.extend({
               "cl": "#ff0000"
             },
             "color":"white",
-            "label": ["id"]
+            "label": ["id"],
+            "tooltip":["serviceType","callType", "priority", "address"]
           }
         }
       }

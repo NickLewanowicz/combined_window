@@ -2,7 +2,7 @@
   <span onClick={{action "pillClick" "call" relatedCall}} style={{unit-color listConfig.data.table.columns.relatedCalls relatedCall}} class="units">
     {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.label}}
     {{#bs-popover triggerEvents="hover focus" placement="right"}}
-      {{relatedCall.address}},{{relatedCall.callType}}
+      {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.tooltip}}
     {{/bs-popover}}
   </span>
 {{/each}}

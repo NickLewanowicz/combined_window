@@ -7,7 +7,7 @@
       {{/if}}
       {{custom-label units listConfig.data.table.columns.units.label}}
       {{#bs-popover triggerEvents="hover focus" placement="right"}}
-        {{units.status}},{{units.unitType}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip}}
       {{/bs-popover}}
     </span>
 {{/each}}
@@ -21,7 +21,7 @@
       {{/if}}
       {{custom-label units listConfig.data.table.columns.units.label}}
       {{#bs-popover triggerEvents="hover focus" placement="right"}}
-        {{units.status}},{{units.unitType}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip}}
       {{/bs-popover}}
     </span>
   {{/each}}
