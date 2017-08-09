@@ -81,23 +81,23 @@ table {
 .units:hover {
   filter: brightness(125%);
 }
+td:nth-child(2) {
+  padding-right: 10px;
+}
 td:nth-child(3) {
   padding-right: 10px;
 }
 td:nth-child(4) {
-  padding-right: 10px;
-}
-td:nth-child(5) {
   padding-top: 2px;
   min-width:30px;
 }
-td:nth-child(6) {
+td:nth-child(5) {
   white-space: nowrap;
 }
-td:nth-child(7) {
+td:nth-child(6) {
   width: 15%;
 }
-td:nth-child(8) {
+td:nth-child(7) {
   width: 60%;
 }
 td {

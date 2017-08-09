@@ -194,9 +194,13 @@ export default Ember.Controller.extend({
       "table": {
         "sort": "priority",
         "headers": {
+          "callNumber": "Call #",
+          "callType": "Type",
           "priority": "Pri",
-          "callId": "Call ID",
-          "callType": "Type"
+          "address": "Address",
+          "relatedCalls": "Related Calls",
+          "callUnits": "Units",
+          "remarks": "Remarks"
         },
         "columns": {
           "priority": {
