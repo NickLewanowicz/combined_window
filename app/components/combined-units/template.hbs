@@ -6,8 +6,8 @@
         {{fa-icon (if (eq call.serviceType 'cl') "fire-extinguisher" "cab")}}
       {{/if}}
       {{custom-label units listConfig.data.table.columns.units.label}}
-      {{#bs-popover triggerEvents="hover focus" placement="right"}}
-        {{custom-label units listConfig.data.table.columns.units.tooltip}}
+      {{#bs-popover triggerEvents="hover" placement="right"}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip true}}
       {{/bs-popover}}
     </span>
 {{/each}}
@@ -20,8 +20,8 @@
         {{fa-icon (if (eq relCalls.serviceType 'cl') "fire-extinguisher" "cab")}}
       {{/if}}
       {{custom-label units listConfig.data.table.columns.units.label}}
-      {{#bs-popover triggerEvents="hover focus" placement="right"}}
-        {{custom-label units listConfig.data.table.columns.units.tooltip}}
+      {{#bs-popover triggerEvents="hover" placement="right"}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip true}}
       {{/bs-popover}}
     </span>
   {{/each}}

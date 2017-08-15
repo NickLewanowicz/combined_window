@@ -1,5 +1,9 @@
 <div style={{body-style listConfig.data.body}}>
-  {{#paper-data-table sortProp=(if listConfig.data.table.sort listConfig.data.table.sort "priority") sortDir="asc" selectable=false as |table|}}
+  {{#paper-data-table
+    sortProp=(if listConfig.data.table.sort listConfig.data.table.sort "priority")
+    sortDir="asc"
+    selectable=false as |table|
+  }}
     {{header-row
       tagName= ''
       table=table
@@ -12,5 +16,4 @@
       listConfig=listConfig
     }}
   {{/paper-data-table}}
-  {{yield}}
 </div>

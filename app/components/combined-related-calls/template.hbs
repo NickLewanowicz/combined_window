@@ -1,8 +1,8 @@
 {{#each call.relatedCalls as |relatedCall|}}
   <span onClick={{action "pillClick" "call" relatedCall}} style={{unit-color listConfig.data.table.columns.relatedCalls relatedCall}} class="units">
     {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.label}}
-    {{#bs-popover triggerEvents="hover focus" placement="right"}}
-      {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.tooltip}}
+    {{#bs-popover triggerEvents="hover" placement="right"}}
+      {{custom-label relatedCall listConfig.data.table.columns.relatedCalls.tooltip true}}
     {{/bs-popover}}
   </span>
 {{/each}}

@@ -2,3 +2,13 @@
   listConfig=listConfig
   listData=listDataLong
 }}
+{{#scroll-top
+  toggleWhenScroll=true
+  effectToToggle='fade'
+  onScroll=(action 'onScroll')
+  onScrollToTop=(action 'onScrollToTop')
+  animate='400' as |clickAction|}}
+  <button type="button" class="to-top btn-xs btn-default" onclick={{clickAction}} value='Scroll to Top'>
+    Scroll to Top
+  </button>
+{{/scroll-top}}

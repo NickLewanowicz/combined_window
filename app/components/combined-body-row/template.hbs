@@ -1,6 +1,6 @@
 {{#table.body as |body|}}
   {{#each (sort-by table.sortDesc listData.data) as |call|}}
-    {{#body.row class="tab data-row" edit=true as |row|}}
+    {{#body.row doubleClick=(action "pillClick" "call" call) class="tab data-row" edit=true as |row|}}
       <!-- Call Id -->
       {{#row.cell}}{{call.id}}{{/row.cell}}
       <!-- Call Type -->
@@ -25,13 +25,9 @@
       {{/row.cell}}
       <!-- Remarks -->
       {{#row.cell}}
-        {{#each call.callUnits as |units|}}
-          {{units.remarks}}
-        {{/each}}
+        {{call.remarks}}
         {{#each call.relatedCalls as |relCalls|}}
-          {{#each relCalls.callUnits as |units|}}
-            {{units.remarks}}
-          {{/each}}
+          {{if (and call.remarks relCalls.remarks) ", "}}{{relCalls.remarks}}
         {{/each}}
       {{/row.cell}}
     {{/body.row}}

@@ -111,4 +111,10 @@ th {
   text-align: center;
 }
 
+.to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 @import "ember-bootstrap/bootstrap";

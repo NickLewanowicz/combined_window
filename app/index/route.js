@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
-export const POLL_INTERVAL = 1000
+export const POLL_INTERVAL = 5000
+export const POLLING = true
 
 export default Ember.Route.extend({
   model: function() {
@@ -14,7 +15,7 @@ export default Ember.Route.extend({
     return []
   },
   loadCalls: task(function * () {
-    while (true) {
+    while (POLLING) {
       yield timeout(POLL_INTERVAL);
       Ember.$.ajax(
       {
@@ -24,4 +25,12 @@ export default Ember.Route.extend({
       })
     }
   }),
+  pillClick(type, data) {
+    Ember.$.ajax(
+    {
+      "type": "GET",
+      "url": type + "/" + ((type === "unit") ? data.unitId : data.id) + "/" + JSON.stringify(data),
+      "contentType": "text/html"
+    })
+  }
 });
