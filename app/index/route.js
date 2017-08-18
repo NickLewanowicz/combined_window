@@ -6,6 +6,7 @@ export const POLLING = true
 export default Ember.Route.extend({
   model: function() {
     this.get('loadCalls').perform()
+    this.controllerFor('index').get('listDataUpdating').perform()
     Ember.$.ajax(
     {
       type: "GET",
@@ -14,8 +15,10 @@ export default Ember.Route.extend({
     })
     return []
   },
+  pollNum: 0,
   loadCalls: task(function * () {
     while (POLLING) {
+      this.set('pollNum', this.get('pollNum')+1)
       yield timeout(POLL_INTERVAL);
       Ember.$.ajax(
       {

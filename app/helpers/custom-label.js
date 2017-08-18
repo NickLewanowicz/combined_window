@@ -2,8 +2,8 @@ import Ember from 'ember';
 //Currently using positional params 
   //1. Object which your going to display
   //2. List of properties your going to display
-  //3. Boolean flag. True: "Status: STATUS, Id: ID, Type: TYPE" 
-  //                 False:"STATUS,ID,TYPE"  
+  //3. Boolean flag. ex. True: "Status: STATUS, Id: ID, Type: TYPE" 
+  //                     False:"STATUS,ID,TYPE"  
 export function customLabel(params/*, hash*/) {
   var label = ""
   if(params[1] === null){return params[1]["unitId"]}

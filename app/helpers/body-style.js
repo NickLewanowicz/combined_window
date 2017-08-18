@@ -1,5 +1,6 @@
 import Ember from 'ember';
-
+//Body style:
+// This helper will ingest a json object 
 export function configStyle(params/*, hash*/) {
   var style = ""
   for (var key in params[0]) {

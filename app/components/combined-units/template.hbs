@@ -1,7 +1,7 @@
 {{#each call.callUnits as |units|}}
     <span onClick={{action "pillClick" "unit" units}}  style={{unit-color listConfig.data.table.columns.units units}} class="units">
-      {{#if (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
-        {{fa-icon (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+      {{#if (get-property listConfig.data.table.columns.units.icon units)}}
+        {{fa-icon (get-property listConfig.data.table.columns.units.icon units)}}
       {{else}}
         {{fa-icon (if (eq call.serviceType 'cl') "fire-extinguisher" "cab")}}
       {{/if}}
@@ -14,8 +14,8 @@
 {{#each call.relatedCalls as |relCalls|}}
   {{#each relCalls.callUnits as |units|}}
     <span onClick={{action "pillClick" "unit" units}} style={{unit-color listConfig.data.table.columns.units units}} class="units">
-      {{#if (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
-        {{fa-icon (get-property listConfig.data.table.columns.units.icon units listConfig.data.table.columns.units.icon.key)}}
+      {{#if (get-property listConfig.data.table.columns.units.icon units)}}
+        {{fa-icon (get-property listConfig.data.table.columns.units.icon units)}}
       {{else}}
         {{fa-icon (if (eq relCalls.serviceType 'cl') "fire-extinguisher" "cab")}}
       {{/if}}
