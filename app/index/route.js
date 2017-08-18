@@ -6,7 +6,6 @@ export const POLLING = true
 export default Ember.Route.extend({
   model: function() {
     this.get('loadCalls').perform()
-    this.controllerFor('index').get('listDataUpdating').perform()
     Ember.$.ajax(
     {
       type: "GET",
