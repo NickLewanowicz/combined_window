@@ -1,0 +1,35 @@
+{{#table.body as |body|}}
+  {{#each (sort-by table.sortDesc listData.data) as |call|}}
+    {{#body.row doubleClick=(action "pillClick" "call" call) class="tab data-row" edit=true as |row|}}
+      <!-- Call Id -->
+      {{#row.cell}}{{call.id}}{{/row.cell}}
+      <!-- Call Type -->
+      {{#row.cell}}{{call.callType}}{{/row.cell}}
+      <!-- Priority -->
+      {{#row.cell numeric=true}}
+        <span class="priority" style={{priority-color listConfig.data.table.columns.priority call.priority}}>
+          {{call.priority}}
+        </span>
+      {{/row.cell}}
+      <!-- Address -->
+      {{#row.cell}}
+        {{uppercase call.address}}
+      {{/row.cell}}
+      <!-- Related Calls -->
+      {{#row.cell}}
+        {{combined-related-calls listConfig=listConfig call=call}}
+      {{/row.cell}}
+      <!-- Units -->
+      {{#row.cell}}
+        {{combined-units listConfig=listConfig call=call}}
+      {{/row.cell}}
+      <!-- Remarks -->
+      {{#row.cell}}
+        {{call.remarks}}
+        {{#each call.relatedCalls as |relCalls|}}
+          {{if (and call.remarks relCalls.remarks) ", "}}{{relCalls.remarks}}
+        {{/each}}
+      {{/row.cell}}
+    {{/body.row}}
+  {{/each}}
+{{/table.body}}

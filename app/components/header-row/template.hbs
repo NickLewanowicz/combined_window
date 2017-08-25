@@ -1,0 +1,7 @@
+{{#table.head as |head|}}
+  {{#each-in headers as |key header|}}
+    {{#head.column}}
+      {{header}}
+    {{/head.column}}
+  {{/each-in}}
+{{/table.head}}
