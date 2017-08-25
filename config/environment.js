@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'combined-window',
+    podModulePrefix: 'combined-window/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'hash',

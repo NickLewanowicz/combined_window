@@ -1,0 +1,44 @@
+<style>
+.updated {
+    animation-name: example;
+    animation-duration: 4s;
+}
+@keyframes example {
+    0%   {box-shadow: 0px 0px 0px 0px white}
+    20%  {box-shadow: 0px 0px 12px 4px white}
+    50%   {box-shadow: 0px 0px 0px 0px white}
+    80%  {box-shadow: 0px 0px 12px 4px white}
+    100% {box-shadow: 0px 0px 0px 0px white}
+}
+</style>
+
+{{#each call.callUnits as |units|}}
+    <span class={{if units.changed "updated" ""}} Click={{action "pillClick" "unit" units}}  style={{unit-color listConfig.data.table.columns.units units}} class="units">
+      {{#if (get-property listConfig.data.table.columns.units.icon units)}}
+        {{fa-icon (get-property listConfig.data.table.columns.units.icon units)}}
+      {{else}}
+        {{fa-icon (if (eq call.serviceType 'cl') "fire-extinguisher" "cab")}}
+      {{/if}}
+      {{custom-label units listConfig.data.table.columns.units.label}}
+      {{#bs-popover triggerEvents="hover" placement="right"}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip true}}
+      {{/bs-popover}}
+    </span>
+{{/each}}
+{{#each call.relatedCalls as |relCalls|}}
+  {{#each relCalls.callUnits as |units|}}
+    {{units.changed}}
+    <span onClick={{action "pillClick" "unit" units}} style={{unit-color listConfig.data.table.columns.units units}} class="units">
+      {{#if (get-property listConfig.data.table.columns.units.icon units)}}
+        {{fa-icon (get-property listConfig.data.table.columns.units.icon units)}}
+      {{else}}
+        {{fa-icon (if (eq relCalls.serviceType 'cl') "fire-extinguisher" "cab")}}
+      {{/if}}
+      {{custom-label units listConfig.data.table.columns.units.label}}
+      {{#bs-popover triggerEvents="hover" placement="right"}}
+        {{custom-label units listConfig.data.table.columns.units.tooltip true}}
+      {{/bs-popover}}
+    </span>
+  {{/each}}
+{{/each}}
+{{yield}}

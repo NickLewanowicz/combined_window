@@ -1,0 +1,19 @@
+<div style={{body-style listConfig.data.body}}>
+  {{#paper-data-table
+    sortProp=(if listConfig.data.table.sort listConfig.data.table.sort "priority")
+    sortDir="asc"
+    selectable=false as |table|
+  }}
+    {{header-row
+      tagName= ''
+      table=table
+      headers=listConfig.data.table.headers
+    }}
+    {{combined-body-row
+      tagName= ''
+      table=table
+      listData=listData
+      listConfig=listConfig
+    }}
+  {{/paper-data-table}}
+</div>
